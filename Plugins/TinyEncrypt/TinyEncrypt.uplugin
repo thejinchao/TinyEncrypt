@@ -1,0 +1,30 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.1",
+	"FriendlyName": "TinyEncrypt",
+	"Description": "This plugin provides the implementation of the DH key exchange algorithm and the TEA encryption algorithm",
+	"Category": "Other",
+	"CreatedBy": "Neo Jin",
+	"CreatedByURL": "",
+	"DocsURL": "https://docs.google.com/document/d/1QB641crdqNk3fJgjq2KxH7bOaxpo1Qd3kh2DVneSgPg/edit?usp=sharing",
+	"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/bcbf59b92d284fe79ce235b22123ae4a",
+	"SupportURL": "",
+	"EngineVersion": "5.3.0",
+	"CanContainContent": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "TinyEncrypt",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"WhitelistPlatforms": [
+				"Win64",
+				"Mac",
+				"Linux",
+				"IOS",
+				"Android"
+			]
+		}
+	]
+}
