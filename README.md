@@ -1,4 +1,7 @@
-# DH Key Exchange and TEA Encryption
+# DH Key Exchange and TEA Encryption for UnrealEngine
+
+TEA([Tiny Encryption Algorithm](https://en.wikipedia.org/wiki/Tiny_Encryption_Algorithm)) is a fast encryption algorithm that can meet the encryption needs of network communication in most cases. Since TEA is a symmetric encryption algorithm, a key exchange protocol is needed to negotiate the same key for both parties before starting to transmit formal data. This plugin implements the TEA encryption algorithm and the DH([Diffie–Hellman](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange)) key exchange algorithm.  
+This unreal engine plugin provides the implementation of the DH key exchange algorithm and the TEA encryption algorithm, based on which basic encrypted communication can be realized.
 
 ## 1. Introduction
 
