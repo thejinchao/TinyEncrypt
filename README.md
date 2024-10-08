@@ -4,7 +4,8 @@
 
 In 1976, two American mathematicians, Whitfield Diffie and Martin Hellman, were the first to publish a method to solve the key transmission problem. Therefore, this method is commonly referred to as the Diffie-Hellman key exchange algorithm. This algorithm proposes such a practice: "Before encrypted communication, both parties generate part of the password separately, then exchange and combine them to form the final password."  
 The DH key exchange algorithm uses the principle of irreversibility of discrete logarithm calculations in mathematics. The communication parties first generate a pair of public and private keys, then exchange public keys, and finally calculate a common key. In this way, the key does not appear in network communication, protecting the safety of both communication parties.  
-![dh_exchange](Images/dh_exchange.png)
+![dh_exchange](Images/dh_exchange.png)  
+
 After the key exchange, the communication parties can use a certain encryption algorithm to encrypt the communication content. Since the security of the key is guaranteed, the encryption algorithm does not need to be too complex. In most cases, the TEA algorithm can meet the requirements.  
 The TEA(Tiny Encryption Algorithm) is a block cipher notable for its simplicity of description and implementation, typically a few lines of code. It was designed by David Wheeler and Roger Needham of the Cambridge Computer Laboratory in 1994.
 
@@ -58,11 +59,11 @@ TEA.Decrypt(EncryptDataBuff, EncryptLength, DecryptOutputBuff);
 
 ## 4. Using in Blueprints
 
-1. Generate random key pair
+1. Generate random key pair  
 ![generate_key_pair](Images/generate_key_pair.png)
 
-2. Calculate the secret key using the key pair you generated and the public key received from the other party.
+2. Calculate the secret key using the key pair you generated and the public key received from the other party.  
 ![generate_sec_key](Images/generate_sec_key.png)
 
-3. Use the generated secret key to encrypt and decrypt data.
+3. Use the generated secret key to encrypt and decrypt data.  
 ![encrypt](Images/encrypt.png)
