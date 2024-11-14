@@ -1,5 +1,6 @@
 // Copyright (C) 2024 Neo Jin. All Rights Reserved.
 #include "TinyEncryptAlgorithm.h"
+#include "TinyEncryptUtilities.h"
 #include "Misc/Paths.h"
 #include "AutomationTest/TinyEncryptAutomationTestInterface.h"
 #include "Misc/AutomationTest.h"
@@ -103,6 +104,55 @@ bool TestTinyEncryptEncrypt(FString& Detail)
 		TEST_TRUE_WITH_AUTONAME(FMemory::Memcmp(PlainText, DecryptOutputBuff, PlainTextLen) == 0);
 	}
 
+	//Test Blueprint Utilities
+	{
+		uint8* PlainText = (uint8*)"Hello,World!";
+		int32 PlainTextLen = TCString<char>::Strlen((const char*)PlainText);
+
+		TArray<uint8> InputData(PlainText, PlainTextLen);
+		TEST_TRUE_WITH_AUTONAME(InputData.Num() == 12);
+
+		const int32 EncryptLength = FTinyEncrypt::GetEncryptLength(PlainTextLen);
+		TEST_TRUE_WITH_AUTONAME(EncryptLength == 16);
+
+		//Make random TEA
+		FUInt128Ex RandomKey;
+		RandomKey.MakeRandom();
+
+		//Test encrypt
+		TArray<uint8> EncryptedData = UTinyEncryptUtilities::EncryptWithTEA(InputData, RandomKey);
+		TEST_TRUE_WITH_AUTONAME(EncryptedData.Num() == EncryptLength);
+
+		//Test decrypt
+		TArray<uint8> DecryptedData = UTinyEncryptUtilities::DecryptWithTEA(EncryptedData, RandomKey);
+		TEST_TRUE_WITH_AUTONAME(DecryptedData.Num() == PlainTextLen);
+		TEST_TRUE_WITH_AUTONAME(FMemory::Memcmp(PlainText, DecryptedData.GetData(), PlainTextLen) == 0);
+	}
+
+	//Test Blueprint Utilities again(Multiples of 8)
+	{
+		uint8* PlainText = (uint8*)"ABCDEFGHIGKLMNOP";
+		int32 PlainTextLen = TCString<char>::Strlen((const char*)PlainText);
+
+		TArray<uint8> InputData(PlainText, PlainTextLen);
+		TEST_TRUE_WITH_AUTONAME(InputData.Num() == 16);
+
+		const int32 EncryptLength = FTinyEncrypt::GetEncryptLength(PlainTextLen);
+		TEST_TRUE_WITH_AUTONAME(EncryptLength == 24);
+
+		//Make random TEA
+		FUInt128Ex RandomKey;
+		RandomKey.MakeRandom();
+
+		//Test encrypt
+		TArray<uint8> EncryptedData = UTinyEncryptUtilities::EncryptWithTEA(InputData, RandomKey);
+		TEST_TRUE_WITH_AUTONAME(EncryptedData.Num() == EncryptLength);
+
+		//Test decrypt
+		TArray<uint8> DecryptedData = UTinyEncryptUtilities::DecryptWithTEA(EncryptedData, RandomKey);
+		TEST_TRUE_WITH_AUTONAME(DecryptedData.Num() == PlainTextLen);
+		TEST_TRUE_WITH_AUTONAME(FMemory::Memcmp(PlainText, DecryptedData.GetData(), PlainTextLen) == 0);
+	}
 	return true;
 }
 
