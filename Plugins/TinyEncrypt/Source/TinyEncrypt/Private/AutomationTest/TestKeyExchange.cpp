@@ -298,7 +298,11 @@ bool TestTinyEncryptExchange(FString& Detail)
 
 #if WITH_DEV_AUTOMATION_TESTS && !UE_BUILD_SHIPPING
 
+#if (ENGINE_MAJOR_VERSION >= 5 && ENGINE_MINOR_VERSION >= 5)
+IMPLEMENT_CUSTOM_SIMPLE_AUTOMATION_TEST(FTinyEncryptTestUInt128, FAutomationTestBase, "TinyEncrypt.UInt128", EAutomationTestFlags_ApplicationContextMask | EAutomationTestFlags::EngineFilter)
+#else
 IMPLEMENT_CUSTOM_SIMPLE_AUTOMATION_TEST(FTinyEncryptTestUInt128, FAutomationTestBase, "TinyEncrypt.UInt128", EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::EngineFilter)
+#endif
 bool FTinyEncryptTestUInt128::RunTest(const FString& Parameters)
 {
 	FString Detail;
@@ -307,8 +311,11 @@ bool FTinyEncryptTestUInt128::RunTest(const FString& Parameters)
 	return true;
 }
 
+#if (ENGINE_MAJOR_VERSION >= 5 && ENGINE_MINOR_VERSION >= 5)
+IMPLEMENT_CUSTOM_SIMPLE_AUTOMATION_TEST(FTinyEncryptTestKeyExchange, FAutomationTestBase, "TinyEncrypt.KeyExchange", EAutomationTestFlags_ApplicationContextMask | EAutomationTestFlags::EngineFilter)
+#else
 IMPLEMENT_CUSTOM_SIMPLE_AUTOMATION_TEST(FTinyEncryptTestKeyExchange, FAutomationTestBase, "TinyEncrypt.KeyExchange", EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::EngineFilter)
-
+#endif
 bool FTinyEncryptTestKeyExchange::RunTest(const FString& Parameters)
 {
 	FString Detail;

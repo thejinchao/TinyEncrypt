@@ -160,8 +160,11 @@ bool TestTinyEncryptEncrypt(FString& Detail)
 
 #if WITH_DEV_AUTOMATION_TESTS && !UE_BUILD_SHIPPING
 
+#if (ENGINE_MAJOR_VERSION >= 5 && ENGINE_MINOR_VERSION >= 5)
+IMPLEMENT_CUSTOM_SIMPLE_AUTOMATION_TEST(FTinyEncryptTestTEA, FAutomationTestBase, "TinyEncrypt.TEA", EAutomationTestFlags_ApplicationContextMask | EAutomationTestFlags::EngineFilter)
+#else
 IMPLEMENT_CUSTOM_SIMPLE_AUTOMATION_TEST(FTinyEncryptTestTEA, FAutomationTestBase, "TinyEncrypt.TEA", EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::EngineFilter)
-
+#endif
 bool FTinyEncryptTestTEA::RunTest(const FString& Parameters)
 {
 	FString Detail;
