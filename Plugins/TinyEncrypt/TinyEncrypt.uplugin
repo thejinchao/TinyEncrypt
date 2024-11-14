@@ -1,7 +1,7 @@
 {
 	"FileVersion": 3,
 	"Version": 1,
-	"VersionName": "1.1",
+	"VersionName": "1.2",
 	"FriendlyName": "TinyEncrypt",
 	"Description": "This plugin provides the implementation of the DH key exchange algorithm and the TEA encryption algorithm",
 	"Category": "Other",
