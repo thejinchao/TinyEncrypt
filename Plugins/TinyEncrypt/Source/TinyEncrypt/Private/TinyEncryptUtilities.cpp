@@ -84,14 +84,16 @@ TArray<uint8> UTinyEncryptUtilities::DecryptWithTEA(const TArray<uint8>& InputDa
 
 	int32 InputLen = InputData.Num();
 	const uint8* InputDataPtr = InputData.GetData();
-	const int32 EncryptLength = FTinyEncrypt::GetEncryptLength(InputLen);
+	const int32 DecryptLength = FTinyEncrypt::GetDecryptLength(InputLen);
 
 	TArray<uint8> OutputData;
-	OutputData.Init(0, EncryptLength);
+	OutputData.Init(0, DecryptLength);
+	int32 OutputLength = 0;
 	if (InputDataPtr != nullptr && InputLen > 0)
 	{
-		TEA.Decrypt(InputDataPtr, InputLen, OutputData.GetData());
+		OutputLength = TEA.Decrypt(InputDataPtr, InputLen, OutputData.GetData());
 	}
 
+	OutputData.SetNum(OutputLength);
 	return OutputData;
 }
