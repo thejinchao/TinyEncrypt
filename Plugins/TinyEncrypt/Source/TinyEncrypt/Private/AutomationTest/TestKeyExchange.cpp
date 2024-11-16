@@ -3,6 +3,7 @@
 #include "Misc/Paths.h"
 #include "AutomationTest/TinyEncryptAutomationTestInterface.h"
 #include "Misc/AutomationTest.h"
+#include "Runtime/Launch/Resources/Version.h"
 
 #if !UE_BUILD_SHIPPING
 
