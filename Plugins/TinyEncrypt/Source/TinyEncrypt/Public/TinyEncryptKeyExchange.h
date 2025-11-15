@@ -153,8 +153,8 @@ public:
 };
 
 USTRUCT(BlueprintType, meta = (
-	HasNativeMake  = "TinyEncrypt.TinyEncryptUtilities.MakeRandomDHKeyPair",
-	HasNativeBreak = "TinyEncrypt.TinyEncryptUtilities.BreakDHKeyPair"))
+	HasNativeMake  = "/Script/TinyEncrypt.TinyEncryptUtilities.MakeRandomDHKeyPair",
+	HasNativeBreak = "/Script/TinyEncrypt.TinyEncryptUtilities.BreakDHKeyPair"))
 struct TINYENCRYPT_API FDiffieHellmanKeyPair
 {
 	GENERATED_BODY()
